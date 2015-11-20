@@ -67,3 +67,12 @@
 > compress [] = []
 > compress [x] = [x]
 > compress (x:y:xs) = if x==y then compress (y:xs) else [x] ++ compress (y:xs)
+
+-- Exercise 9 - 13
+
+-- TODO
+
+-- Exercise 14
+
+> dupe [] = []
+> dupe xs = [head xs] ++ [head xs] ++ dupe (tail xs)
