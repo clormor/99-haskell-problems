@@ -76,3 +76,8 @@
 
 > dupe [] = []
 > dupe xs = [head xs] ++ [head xs] ++ dupe (tail xs)
+
+-- Exercise 15
+
+> replica [] n = []
+> replica xs n = (replicate n . head) xs ++ (replica . tail) xs n
