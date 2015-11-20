@@ -56,3 +56,14 @@
 >    let midpoint = length xs `div` 2
 >        split xs = [take midpoint xs, (take midpoint . reverse) xs]
 >    in (head . split) xs  == (last . split) xs
+
+-- Exercise 7
+
+-- TODO
+
+-- Exercise 8
+
+> compress :: (Eq a) => [a] -> [a]
+> compress [] = []
+> compress [x] = [x]
+> compress (x:y:xs) = if x==y then compress (y:xs) else [x] ++ compress (y:xs)
