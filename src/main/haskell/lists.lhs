@@ -42,3 +42,17 @@
 > myReverse' :: [a] -> [a]
 > myReverse' [] = []
 > myReverse' xs = myReverse' (tail xs) ++ [head xs]
+
+-- Exercise 6
+
+> isPallindrome :: (Eq a) => [a] -> Bool
+> isPallindrome [] = True
+> isPallindrome [x] = True
+> isPallindrome xs = 
+>	let newList = (take (length xs - 2) . tail) xs in
+>		if head xs == last xs then isPallindrome newList else False
+
+> isPallindrome' xs =
+>    let midpoint = length xs `div` 2
+>        split xs = [take midpoint xs, (take midpoint . reverse) xs]
+>    in (head . split) xs  == (last . split) xs
