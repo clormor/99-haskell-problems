@@ -35,3 +35,10 @@
 > myLength' [x] = 1
 > myLength' (x:xs) = 1 + myLength' xs
 
+-- Exercise 5
+
+> myReverse = reverse
+
+> myReverse' :: [a] -> [a]
+> myReverse' [] = []
+> myReverse' xs = myReverse' (tail xs) ++ [head xs]
