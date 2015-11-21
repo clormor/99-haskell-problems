@@ -76,6 +76,14 @@
 
 -- Exercise 9 - 13
 
+> pack :: (Eq a) => [a] -> [[a]]
+> pack xs =
+>     let pack' [] [] = []
+>         pack' [] (x:xs) = pack' [x] xs
+>         pack' xs [] = [xs]
+>         pack' (x:xs) (y:ys) = if (x==y) then pack' (x:y:xs) ys else [(x:xs)] ++ pack' [y] ys
+>     in pack' [] xs
+
 -- TODO
 
 -- Exercise 14
