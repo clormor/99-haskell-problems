@@ -59,7 +59,13 @@
 
 -- Exercise 7
 
--- TODO
+> data NestedList a = Elem a | List [NestedList a]
+
+> flatten :: NestedList a -> [a]
+> flatten (Elem x) = [x]
+> flatten (List []) = []
+> flatten (List [(Elem x)]) = [x]
+> flatten (List (x:xs)) = flatten x ++ flatten (List (xs))
 
 -- Exercise 8
 
@@ -81,3 +87,8 @@
 
 > replica [] n = []
 > replica xs n = (replicate n . head) xs ++ (replica . tail) xs n
+
+-- Exercise 17
+
+-- TODO 
+-- mySplit xs n = [take n xs, 
