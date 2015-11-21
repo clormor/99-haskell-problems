@@ -74,7 +74,7 @@
 > compress [x] = [x]
 > compress (x:y:xs) = if x==y then compress (y:xs) else [x] ++ compress (y:xs)
 
--- Exercise 9 - 13
+-- Exercise 9
 
 > pack :: (Eq a) => [a] -> [[a]]
 > pack xs =
@@ -83,6 +83,19 @@
 >         pack' xs [] = [xs]
 >         pack' (x:xs) (y:ys) = if (x==y) then pack' (x:y:xs) ys else [(x:xs)] ++ pack' [y] ys
 >     in pack' [] xs
+
+> pack' [] = [] -- if you know the split function, then this exercise is a little easier
+> pack' (x:xs) = let (first, second) = span (==x) xs
+>     in ((x:first) : pack' second)
+
+-- Exercise 10
+
+> encode :: (Eq a) => [a] -> [(Int,a)]
+> encode [] = []
+> encode xs =
+>     let encode' (n,x) [] = [(n,x)]
+>         encode' (n,x) (y:ys) = if (x==y) then encode' (n+1,x) ys else [(n,x)] ++ encode' (1,y) ys
+>     in encode' (0, head xs) xs
 
 -- TODO
 
