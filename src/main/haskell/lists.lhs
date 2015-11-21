@@ -65,7 +65,7 @@
 > flatten (Elem x) = [x]
 > flatten (List []) = []
 > flatten (List [(Elem x)]) = [x]
-> flatten (List (x:xs)) = flatten x ++ flatten (List (xs))
+> flatten (List (x:xs)) = flatten x ++ flatten (List xs)
 
 -- Exercise 8
 
