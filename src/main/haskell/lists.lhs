@@ -134,6 +134,8 @@
 > replica [] n = []
 > replica xs n = (replicate n . head) xs ++ (replica . tail) xs n
 
+> replica' xs n = foldr ((++) . replicate n) [] xs
+
 -- Exercise 17
 
 -- TODO 
