@@ -125,6 +125,14 @@
 > encodeModified :: (Eq a) => [a] -> [Encoded a]
 > encodeModified = foldr (\(i,x) xs -> if i == 1 then Single (x):xs else Multiple (i,x):xs) [] . encode
 
+-- Exercise 12
+
+> decodeModified :: [Encoded a] -> [a]
+> decodeModified [] = []
+> decodeModified [(Single x)] = [x]
+> decodeModified [(Multiple (i,x))] = if i > 2 then x:decodeModified[Multiple (i-1,x)] else [x]
+> decodeModified (x:xs) = decodeModified [x] ++ decodeModified xs
+
 -- TODO
 
 -- Exercise 14
