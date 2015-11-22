@@ -35,6 +35,12 @@
 > myLength' [x] = 1
 > myLength' (x:xs) = 1 + myLength' xs
 
+-- This function is a good candidate for a foldl because
+-- -- 1. it takes a list and returns a single value (foldr is better when building up a new list)
+-- -- 2. if the list is empty then there is a default (non-error) value
+
+> myLength'' xs = foldl (\n xs -> n+1) 0 xs
+
 -- Exercise 5
 
 > myReverse = reverse
