@@ -52,6 +52,11 @@
 >	let newList = (take (length xs - 2) . tail) xs in
 >		if head xs == last xs then isPallindrome newList else False
 
+> isPallindrome'' :: (Eq a) => [a] -> Bool
+> isPallindrome'' [] = True
+> isPallindrome'' [x] = True
+> isPallindrome'' xs = if head xs == last xs then (\ys -> (isPallindrome'' . take (length ys -2) . tail) ys) xs else False
+
 > isPallindrome' xs =
 >    let midpoint = length xs `div` 2
 >        split xs = [take midpoint xs, (take midpoint . reverse) xs]
