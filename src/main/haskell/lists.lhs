@@ -133,6 +133,12 @@
 > decodeModified [(Multiple (i,x))] = if i > 2 then x:decodeModified[Multiple (i-1,x)] else [x]
 > decodeModified (x:xs) = decodeModified [x] ++ decodeModified xs
 
+> decodeModified' :: [Encoded a] -> [a]
+> decodeModified' xs =
+>    let blah (Single x) = [x]
+>        blah (Multiple (i,x)) = replicate i x
+>    in foldr (\x xs -> blah x ++ xs) [] xs
+
 -- TODO
 
 -- Exercise 14
