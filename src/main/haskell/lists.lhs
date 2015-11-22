@@ -139,6 +139,14 @@
 >        blah (Multiple (i,x)) = replicate i x
 >    in foldr (\x xs -> blah x ++ xs) [] xs
 
+-- Using concatMap the function is a little easier to read, but essentially the same
+
+> decodeModified'' :: [Encoded a] -> [a]
+> decodeModified'' = concatMap decodeHelper
+>    where
+>      decodeHelper (Single x)     = [x]
+>      decodeHelper (Multiple (n,x)) = replicate n x
+
 -- TODO
 
 -- Exercise 14
