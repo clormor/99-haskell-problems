@@ -49,6 +49,10 @@
 > myReverse' [] = []
 > myReverse' xs = myReverse' (tail xs) ++ [head xs]
 
+-- Use foldl instead of foldr because prepend (:) is cheaper than append (++)
+
+> myReverse'' xs = foldl (\xs y -> y:xs) [] xs
+
 -- Exercise 6
 
 > isPallindrome :: (Eq a) => [a] -> Bool
