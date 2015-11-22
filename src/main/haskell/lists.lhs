@@ -89,7 +89,7 @@
 >         pack' (x:xs) (y:ys) = if (x==y) then pack' (x:y:xs) ys else [(x:xs)] ++ pack' [y] ys
 >     in pack' [] xs
 
-> pack' [] = [] -- if you know the split function, then this exercise is a little easier
+> pack' [] = [] -- if you know the span function, then this exercise is a little easier
 > pack' (x:xs) = let (first, second) = span (==x) xs
 >     in ((x:first) : pack' second)
 
