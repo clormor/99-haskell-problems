@@ -57,7 +57,7 @@
 
 -- Use the flip function => flip(f(x,y)) = flip(f(y,x))
 
-> myReverse''' = foldl (flip (:)) []
+> myReverse''' xs = foldl (flip (:)) [] xs
 
 -- Exercise 6
 
@@ -124,6 +124,10 @@
 
 > dupe [] = []
 > dupe xs = [head xs] ++ [head xs] ++ dupe (tail xs)
+
+> dupe'' xs = foldr (\x xs -> x:x:xs) [] xs
+
+> dupe''' xs = foldr ((++) . replicate 2) [] xs
 
 -- Exercise 15
 
