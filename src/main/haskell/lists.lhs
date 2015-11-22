@@ -118,6 +118,13 @@
 >         encode' (n,x) (y:ys) = if (x==y) then encode' (n+1,x) ys else [(n,x)] ++ encode' (1,y) ys
 >     in encode' (0, head xs) xs
 
+-- Exercise 11
+
+> data Encoded a = Single a | Multiple (Int, a) deriving Show
+
+> encodeModified :: (Eq a) => [a] -> [Encoded a]
+> encodeModified = foldr (\(i,x) xs -> if i == 1 then Single (x):xs else Multiple (i,x):xs) [] . encode
+
 -- TODO
 
 -- Exercise 14
