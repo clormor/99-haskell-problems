@@ -45,13 +45,19 @@
 
 > myReverse = reverse
 
+-- This solution works but using append (++) is expensive
+
 > myReverse' :: [a] -> [a]
 > myReverse' [] = []
 > myReverse' xs = myReverse' (tail xs) ++ [head xs]
 
--- Use foldl instead of foldr because prepend (:) is cheaper than append (++)
+-- Using a fold, we can use prepend (:), which is cheaper than append (++)
 
 > myReverse'' xs = foldl (\xs y -> y:xs) [] xs
+
+-- Use the flip function => flip(f(x,y)) = flip(f(y,x))
+
+> myReverse''' = foldl (flip (:)) []
 
 -- Exercise 6
 
